@@ -1,10 +1,12 @@
 import cv2
-import numpy as np
 import face_recognition
 
-image_bgr = face_recognition.load_image_file("../../data/player_data/bim.png")
-image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
+image = face_recognition.load_image_file("../../data/player_data/faruq.png")
+image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-cv2.imshow("bim_rgb", image_rgb)
-cv2.imshow("bim_bgr", image_bgr)
+face_locations = face_recognition.face_locations(image)[0]
+img_copy = image.copy()
+
+cv2.rectangle(img_copy, (face_locations[3], face_locations[0]), (face_locations[2], face_locations[1]), (0, 255))
+cv2.imshow("bgr", img_copy)
 cv2.waitKey(0)

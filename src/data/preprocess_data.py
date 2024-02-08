@@ -1,12 +1,24 @@
+import os
 import cv2
-import face_recognition
 
-image = face_recognition.load_image_file("../../data/player_data/faruq.png")
-image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-face_locations = face_recognition.face_locations(image)[0]
-img_copy = image.copy()
+data_path = "../../data/player_data"
 
-cv2.rectangle(img_copy, (face_locations[3], face_locations[0]), (face_locations[2], face_locations[1]), (0, 255))
-cv2.imshow("bgr", img_copy)
-cv2.waitKey(0)
+
+def preprocess(path):
+    images = []
+    names = []
+    img_list = os.listdir(path)
+
+    for img in img_list:
+        img_read = cv2.imread(f"{data_path}/{img}")
+        images.append(img_read)
+        names.append(os.path.splitext(img)[0])
+
+    return images, names
+
+
+# testing function
+# img_pre, img_name = preprocess(data_path)
+#
+# print(f"{img_pre}, {img_name}")

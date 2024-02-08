@@ -1,11 +1,13 @@
+import os
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
+import hashlib
 
 
 class DataEncryption:
 
     def __init__(self):
-        self.key = get_random_bytes(16)
+        self.key =
         self.cipher = AES.new(self.key, AES.MODE_EAX)
 
     def encrypt(self, file_name):
@@ -19,5 +21,3 @@ class DataEncryption:
     def decrypt(self, file_name):
         with open(file_name, "rb") as f:
             nonce, tag, ciphertext = [f.read(x) for x in (16, 16, -1)]
-
-        self.cipher = AES.new(self.key, AES, nonce)

@@ -17,8 +17,3 @@ def preprocess(path):
 
     return images, names
 
-
-# testing function
-# img_pre, img_name = preprocess(data_path)
-#
-# print(f"{img_pre}, {img_name}")

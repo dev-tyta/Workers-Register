@@ -6,8 +6,8 @@ import hashlib
 
 class DataEncryption:
 
-    def __init__(self):
-        self.key = 
+    def __init__(self, key):
+        self.key = key
         self.cipher = AES.new(self.key, AES.MODE_EAX)
 
     def encrypt(self, file_name):
